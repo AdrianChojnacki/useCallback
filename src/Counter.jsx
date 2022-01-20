@@ -10,4 +10,4 @@ const Counter = ({ callback, index }) => {
   )
 }
 
-export default Counter;
+export default React.memo(Counter);

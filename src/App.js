@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import Counter from './Counter';
 
 import './App.css';
 
 const App = () => {
-  // const [state, setState] = useState({x: 0, y: 0});
   const [firstCounter, setFirstCounter] = useState(0);
   const [secondCounter, setSecondCounter] = useState(0);
 
-  // const increaseX = () => setState({...state, x: state.x + 1});
-  // const increaseY = () => setState({...state, y: state.y + 1});
+  const increaseFirstCounter = useCallback(
+    () => setFirstCounter(prevValue => prevValue + 1), []
+  );
 
-  const increaseFirstCounter = () =>
-    setFirstCounter(firstCounter + 1);
-
-  const increaseSecondCounter = () =>
-    setSecondCounter(secondCounter + 1);
+  const increaseSecondCounter = useCallback(
+    () => setSecondCounter(prevValue => prevValue + 1), []
+  );
 
   const firstCounterComponent = <Counter callback={increaseFirstCounter} index={1} />
 
