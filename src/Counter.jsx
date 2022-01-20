@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Counter = () => {
   console.log('render');
@@ -10,4 +10,4 @@ const Counter = () => {
   )
 }
 
-export default React.memo(Counter);
+export default memo(Counter);
