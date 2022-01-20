@@ -9,23 +9,19 @@ const App = () => {
   const [secondCounter, setSecondCounter] = useState(0);
 
   const increaseFirstCounter = useCallback(
-    () => setFirstCounter(prevValue => prevValue + 1), []
+    () => setFirstCounter(firstCounter + 1), [firstCounter]
   );
 
   const increaseSecondCounter = useCallback(
     () => setSecondCounter(prevValue => prevValue + 1), []
   );
 
-  const firstCounterComponent = <Counter callback={increaseFirstCounter} index={1} />
-
-  const secondCounterComponent = <Counter callback={increaseSecondCounter} index={2} />
-
   return (
     <div>
       <p>Licznik nr 1 wynosi: {firstCounter}</p>
       <p>Licznik nr 2 wynosi: {secondCounter}</p>
-      {firstCounterComponent}
-      {secondCounterComponent}
+      <Counter callback={increaseFirstCounter} index={1} />
+      <Counter callback={increaseSecondCounter} index={2} />
     </div>
   );
 }
