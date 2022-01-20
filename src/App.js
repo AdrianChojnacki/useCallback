@@ -15,7 +15,7 @@ const App = () => {
     setSecondCounter(secondCounter + 1);
 
   const firstCounterComponent = useMemo(() =>
-    <Counter counter={firstCounter} index={1} />, []
+    <Counter counter={firstCounter} index={1} />, [firstCounter]
   );
 
   return (
