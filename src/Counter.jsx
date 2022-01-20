@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
 
-const Counter = () => {
-  console.log('render');
+const Counter = ({ counter, index }) => {
+  console.log(`Render licznika nr ${index}`);
 
   return (
     <div>
-      Komponent nigdy się nie zmienia!
+      <p>Licznik nr {index} wynosi: {counter}</p>
     </div>
   )
 }
 
-export default memo(Counter);
+export default Counter;

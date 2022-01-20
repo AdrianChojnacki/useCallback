@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import Counter from './Counter';
 
@@ -14,11 +14,17 @@ const App = () => {
   const increaseSecondCounter = () =>
     setSecondCounter(secondCounter + 1);
 
+  const firstCounterComponent = useMemo(() =>
+    <Counter counter={firstCounter} index={1} />, []
+  );
+
   return (
     <div>
       <p>Licznik nr 1 wynosi: {firstCounter}</p>
       <p>Licznik nr 2 wynosi: {secondCounter}</p>
-      <Counter />
+      {firstCounterComponent}
+      {/* <Counter index={1} /> */}
+      <Counter counter={secondCounter} index={2} />
       <button onClick={increaseFirstCounter}>
         Zwiększ licznik nr 1
       </button>
