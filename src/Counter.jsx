@@ -10,4 +10,5 @@ const Counter = ({ counter, index }) => {
   )
 }
 
-export default memo(Counter);
+// export default memo(Counter);
+export default Counter;
