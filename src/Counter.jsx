@@ -1,14 +1,13 @@
-import React, { memo } from 'react';
+import React from 'react';
 
-const Counter = ({ counter, index }) => {
+const Counter = ({ callback, index }) => {
   console.log(`Render licznika nr ${index}`);
 
   return (
     <div>
-      <p>Licznik nr {index} wynosi: {counter}</p>
+      <button onClick={callback}>Zwiększ licznik {index}</button>
     </div>
   )
 }
 
-// export default memo(Counter);
 export default Counter;

@@ -1,37 +1,33 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 
 import Counter from './Counter';
 
 import './App.css';
 
 const App = () => {
-  const [state, setState] = useState({x: 0, y: 0});
+  // const [state, setState] = useState({x: 0, y: 0});
+  const [firstCounter, setFirstCounter] = useState(0);
+  const [secondCounter, setSecondCounter] = useState(0);
 
-  const increaseX = () => setState({...state, x: state.x + 1});
-  const increaseY = () => setState({...state, y: state.y + 1});
+  // const increaseX = () => setState({...state, x: state.x + 1});
+  // const increaseY = () => setState({...state, y: state.y + 1});
 
-  const firstCounterComponent = useMemo(() =>
-    <Counter counter={state.x} index={1} />, [state.x]
-  );
+  const increaseFirstCounter = () =>
+    setFirstCounter(firstCounter + 1);
 
-  const secondCounterComponent = useMemo(() =>
-    <Counter counter={state.y} index={2} />, [state.y]
-  );
+  const increaseSecondCounter = () =>
+    setSecondCounter(secondCounter + 1);
+
+  const firstCounterComponent = <Counter callback={increaseFirstCounter} index={1} />
+
+  const secondCounterComponent = <Counter callback={increaseSecondCounter} index={2} />
 
   return (
     <div>
-      <p>Licznik nr 1 wynosi: {state.x}</p>
-      <p>Licznik nr 2 wynosi: {state.y}</p>
-      {/* <Counter counter={state.x} index={1} /> */}
-      {/* <Counter counter={state.y} index={2} /> */}
+      <p>Licznik nr 1 wynosi: {firstCounter}</p>
+      <p>Licznik nr 2 wynosi: {secondCounter}</p>
       {firstCounterComponent}
       {secondCounterComponent}
-      <button onClick={increaseX}>
-        Zwiększ licznik nr 1
-      </button>
-      <button onClick={increaseY}>
-        Zwiększ licznik nr 2
-      </button>
     </div>
   );
 }
